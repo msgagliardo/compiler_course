@@ -1,0 +1,14 @@
+/*Stream redirected output from HW2.java*/
+
+input = acd
+accept
+input = aebcd
+accept
+input = aebbcd
+accept
+input = ad
+reject
+input = ae
+reject
+input = aeeb
+reject

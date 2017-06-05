@@ -1,0 +1,21 @@
+Grammar for S1:
+
+program -> statementList <EOF>                     {<ID>, "println", <EOF>}
+statementList -> statement statementList           {<ID>, "println"}
+statementList -> lambda                            {<EOF>}
+statement -> assignmentStatement                   {<ID>}
+statement -> printlnStatement                      {"println"}
+assignmentStatement -> <ID> "=" expr ";"      	   {<ID>}
+printlnStatement -> "println" "(" expr ")" ";"     {"println"}
+
+expr -> term termList                              {"(", "+", "-", <UNSIGNED>, <ID>}
+termList -> "+" term termList                      {"+"}
+termList -> lambda                                 {")", ";"}
+term -> factor factorList                          {"(", "+", "-", <UNSIGNED>, <ID>}
+factorList -> "*" factor factorList                {"*"}
+factorList -> lambda                               {")", ";", "+"}
+factor -> <UNSIGNED>                               {<UNSIGNED>}
+factor -> "+" <UNSIGNED>                           {"+"}
+factor -> "-" <UNSIGNED>                           {"-"}
+factor -> <ID>                                     {<ID>}
+factor -> "(" expr ")"                             {"("}

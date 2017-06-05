@@ -1,0 +1,13 @@
+Grammar for G1 (similar to grammar we have used for arithmetic expressions in S1 - S3):
+
+expr       -> term termList						{<CHAR>, <PERIOD>, "("}
+termList   -> "|" term termList					{"|"}
+termList   -> lambda							{<EORE>, ")"}							*
+term 	   -> factor factorList					{<CHAR>, <PERIOD>, "("}
+factorList -> factor factorList					{<CHAR>, <PERIOD>, "("}
+factorList -> lambda							{"|", <EORE>, ")"}						*
+factor 	   -> <CHAR> factorTail					{<CHAR>}
+factor 	   -> <PERIOD> factorTail				{<PERIOD>}
+factor	   -> "(" expr ")" factorTail			{"("}
+factorTail -> "*" factorTail					{"*"}
+factorTail -> lambda 							{<CHAR>, <PERIOD>, "(", "|", <EORE>, ")"}	*

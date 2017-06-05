@@ -1,0 +1,13 @@
+; from S3 compiler written by Marc Gagliardo
+; poop = 2;
+; kd=  3 bL=  1 bC=  1 eL=  1 eC=  4 im=poop
+; kd=  4 bL=  1 bC=  6 eL=  1 eC=  6 im==
+          pc        poop
+; kd=  2 bL=  1 bC=  8 eL=  1 eC=  8 im=2
+; kd=  5 bL=  1 bC=  9 eL=  1 eC=  9 im=;
+          pwc       2
+; kd=  0 bL=  1 bC= 10 eL=  1 eC= 10 im=<EOF>
+          stav
+
+          halt
+poop:     dw        0

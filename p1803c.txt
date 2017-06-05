@@ -1,0 +1,9 @@
+// p1803c
+
+b*t
+  0: 1/b                        acceptState=5
+  1:              2/lambda  
+  2: 3/*                    
+  3:              4/lambda  
+  4: 5/t                    
+  5:                        

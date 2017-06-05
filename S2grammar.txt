@@ -1,0 +1,29 @@
+Grammar for S2:
+
+program -> statementList <EOF>                     				{<ID>, "println", "print", ";", "{", <EOF>}
+statementList -> statement statementList        				{<ID>, "println", "print", ";", "{"}
+statementList -> lambda                                    		{<EOF>, "}"}
+statement -> assignmentStatement                  				{<ID>}
+statement -> printlnStatement                          			{"println"}
+statement -> printStatement                             		{"print"}
+statement -> nullStatement                               		{";"}
+statement -> compoundStatement                    				{"{"}
+assignmentStatement -> <ID> "=" expr ";"      					{<ID>}
+printlnStatement -> "println" "(" expr ")" ";"       			{"println"}
+printStatement -> "print" "(" expr ")" ";"            			{"print"}
+nullStatement -> ";"                                            {";"}
+compoundSatement -> "{" statementList "}"      					{"{"}
+
+expr -> term termList                                         	{"(", "+", "-", <UNSIGNED>, <ID>}
+termList -> "+" term termList                             		{"+"}
+termList -> "-" term termlist                               	{"-"}
+termList -> lambda                                             	{")", ";"}
+term -> factor factorList                                    	{"(", "+", "-", <UNSIGNED>, <ID>}
+factorList -> "*" factor factorList                       		{"*"}
+factorList -> "/" factor factorList                        		{"/"}
+factorList -> lambda                                           	{")", ";", "+", "-"}
+factor -> <UNSIGNED>                                     		{<UNSIGNED>}
+factor -> "+" <UNSIGNED>                              			{"+"}
+factor -> "-" <UNSIGNED>                               			{"-"}
+factor -> <ID>                                                 	{<ID>}
+factor -> "(" expr ")"                                         	{"("}

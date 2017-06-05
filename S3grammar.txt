@@ -1,0 +1,35 @@
+Grammar for S3:
+
+program -> statementList <EOF>                     				{<ID>, "println", "print", ";", "{", "readint",<EOF>}
+statementList -> statement statementList         				{<ID>, "println", "print", ";", "{", "readint"}
+statementList -> lambda                                     	{<EOF>, "}"}
+statement -> assignmentStatement                            	{<ID>}
+statement -> printlnStatement                                   {"println"}
+statement -> printStatement                                     {"print"}
+statement -> nullStatement                                      {";"}
+statement -> compoundStatement                                  {"{"}
+statement -> readintStatement                                   {"readint"}
+assignmentStatement -> <ID> "=" assignmentTail //";"              {<ID>}
+assignmentTail -> <ID> "=" assignmentTail                       {<ID>}
+assignmentTail -> expr ";"                                      {"(", "+", "-", <UNSIGNED>, <ID>}
+printlnStatement -> "println" "(" (printArg|lambda) ")" ";"     {"println"}
+printStatement -> "print" "(" printArg ")" ";"                  {"print"}
+readintStatement -> "readint" "(" <ID> ")" ";"                  {"readint"}
+printArg -> expr                                                {"(", "+", "-", <UNSIGNED>, <ID>}
+printArg -> <STRING>                                            {<STRING>}
+nullStatement -> ";"                                            {";"}
+compoundSatement -> "{" statementList "}"                       {"{"}
+
+expr -> term termList                                           {"(", "+", "-", <UNSIGNED>, <ID>}
+termList -> "+" term termList                             		{"+"}
+termList -> "-" term termlist                               	{"-"}
+termList -> lambda                                              {")", ";"}
+term -> factor factorList                                    	{"(", "+", "-", <UNSIGNED>, <ID>}
+factorList -> "*" factor factorList                       		{"*"}
+factorList -> "/" factor factorList                       		{"/"}
+factorList -> lambda                                           	{")", ";", "+", "-"}
+factor -> <UNSIGNED>                                     		{<UNSIGNED>}
+factor -> "+" <UNSIGNED>                              			{"+"}
+factor -> "-" <UNSIGNED>                              		    {"-"}
+factor -> <ID>                                                 	{<ID>}
+factor -> "(" expr ")"                                         	{"("}

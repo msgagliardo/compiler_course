@@ -1,0 +1,23 @@
+// p1803b
+
+xyz yes xyz nut
+not here
+boot
+bt
+n.t
+  0: 1/lambda     2/lambda      acceptState=15
+  1: 3/n                    
+  2: 4/b                    
+  3:              5/lambda  
+  4:              6/lambda  
+  5: 7/PERIOD               
+  6: 8/lambda     9/lambda  
+  7:              10/lambda 
+  8: 11/o                   
+  9:              12/lambda 
+ 10: 13/t                   
+ 11:              6/lambda  
+ 12: 14/t                   
+ 13: 15/lambda              
+ 14: 15/lambda              
+ 15:                        

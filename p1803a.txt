@@ -1,0 +1,10 @@
+// p1803a
+
+xyz yes xyz nut
+mayxyzbe neat
+  0: 1/x                        acceptState=5
+  1:              2/lambda  
+  2: 3/y                    
+  3:              4/lambda  
+  4: 5/z                    
+  5:                        

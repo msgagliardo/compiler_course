@@ -1,0 +1,23 @@
+; from S3 compiler written by Marc Gagliardo
+; y = 7;
+          pc        y
+          pwc       7
+; x = 7;
+          stav
+          pc        x
+          pwc       7
+; z = -(+x  - + - + -y);
+          stav
+          pc        z
+          p         x
+          p         y
+          neg 
+          neg 
+          sub 
+          neg 
+          stav
+
+          halt
+y:        dw        0
+x:        dw        0
+z:        dw        0
